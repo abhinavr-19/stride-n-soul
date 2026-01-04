@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Toaster, toast } from 'sonner'
 
 export function ToastProvider() {
