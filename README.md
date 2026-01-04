@@ -43,7 +43,7 @@ Follow these steps to set up the project locally.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/stride-n-soul.git
+   git clone https://github.com/abhinavr-19/stride-n-soul.git
    cd stride-n-soul
    ```
 
@@ -111,5 +111,5 @@ This project is open-source and available under the [MIT License](LICENSE).
 ---
 
 <p align="center">
-  Built with ❤️ by Stride & Soul Team
+  Built with ❤️ by AR
 </p>
