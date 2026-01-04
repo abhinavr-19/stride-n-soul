@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { Canvas, useFrame, useLoader } from '@react-three/fiber'
-import { PerspectiveCamera, useTexture } from '@react-three/drei' // Removed useTexture import
+import { PerspectiveCamera } from '@react-three/drei'
 import * as THREE from 'three'
 import { TextureLoader } from 'three' // Import THREE Loader
 
@@ -23,35 +23,14 @@ function InteractiveShoe({ imagePath }: { imagePath: string }) {
     const meshRef = useRef<THREE.Mesh>(null)
     const texture = useLoader(TextureLoader, imagePath)
 
-    // State for mouse position
-    const [mouse, setMouse] = useState({ x: 0, y: 0 })
-
-    useFrame((state) => {
-        if (!meshRef.current) return
-
-        // Smooth rotation based on mouse position
-        // Damping the rotation for smoothness
-        meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, mouse.y * 0.5, 0.1)
-        meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, mouse.x * 0.5, 0.1)
-
-        // Gentle bobbing animation (Defy Gravity)
-        meshRef.current.position.y = Math.sin(state.clock.elapsedTime) * 0.1
-    })
-
-    const handlePointerMove = (e: any) => {
-        // Normalize coordinates to -1 to 1
-        const x = (e.clientX / window.innerWidth) * 2 - 1
-        const y = -(e.clientY / window.innerHeight) * 2 + 1
-        setMouse({ x, y })
-    }
-
-    // Add event listener to window, or cleaner to use useThree hook for pointer but this works for basic
-    // For R3F, we can use onPointerMove on the mesh or canvas parent, let's use global for better feel
-    // Actually, let's use the state.pointer from useFrame for correctness in R3F
+    // Use state.pointer for interactive rotation
     useFrame((state) => {
         if (!meshRef.current) return
         meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, -state.pointer.y * 0.5, 0.1)
         meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, state.pointer.x * 0.5, 0.1)
+
+        // Gentle bobbing animation
+        meshRef.current.position.y = Math.sin(state.clock.elapsedTime) * 0.1
     })
 
     return (
