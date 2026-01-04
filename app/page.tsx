@@ -4,14 +4,17 @@ import ProductCarousel from "@/components/landing/ProductCarousel";
 import DropCounter from "@/components/landing/DropCounter";
 import Footer from "@/components/landing/Footer";
 
+import About from '@/components/landing/About'
+
 export default function Home() {
   return (
-    <div className="relative">
+    <main className="relative bg-charcoal text-vapor overflow-x-hidden selection:bg-lime selection:text-black">
       <Hero />
-      <TechSpecs />
       <ProductCarousel />
+      <About />
+      <TechSpecs />
       <DropCounter />
       <Footer />
-    </div>
-  );
+    </main>
+  )
 }
