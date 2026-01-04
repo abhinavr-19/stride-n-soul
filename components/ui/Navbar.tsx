@@ -79,7 +79,7 @@ export default function Navbar() {
                             <motion.a
                                 key={item}
                                 href={`#${item.toLowerCase()}`}
-                                className="text-4xl font-display font-bold uppercase hover:text-lime transition-colors text-stroke hover:text-vapor hover:fill-current"
+                                className="text-4xl font-display font-bold uppercase transition-colors text-stroke hover:text-lime"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 * i }}
