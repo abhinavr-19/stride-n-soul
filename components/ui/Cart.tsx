@@ -5,19 +5,14 @@ import { X, Minus, Plus, Trash2, ArrowRight } from 'lucide-react'
 import { useStore } from '@/lib/store'
 import { products } from '@/lib/products'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 
 export default function Cart() {
     const { isOpen, toggleCart, items, removeItem } = useStore()
-    const [cartProducts, setCartProducts] = useState<any[]>([])
 
-    // Hydrate cart items from product list based on IDs
-    useEffect(() => {
-        const filtered = items.map(id => products.find(p => p.id === id)).filter(Boolean)
-        setCartProducts(filtered)
-    }, [items])
+    // Derived state directly from props/store
+    const cartProducts = items.map(id => products.find(p => p.id === id)).filter((p): p is typeof products[0] => p !== undefined)
 
-    const total = cartProducts.reduce((acc, curr) => acc + curr.price, 0)
+    const total = cartProducts.reduce((acc, curr) => (acc || 0) + (curr?.price || 0), 0)
 
     return (
         <AnimatePresence>
