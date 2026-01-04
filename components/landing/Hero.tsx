@@ -39,7 +39,7 @@ export default function Hero() {
 
             {/* Floating Shoe */}
             <motion.div
-                className="relative z-20 w-[90%] md:w-[60%] max-w-4xl aspect-[4/3]"
+                className="relative z-20 w-[90%] md:w-[60%] max-w-4xl aspect-4/3"
                 style={{ y: y1 }}
                 initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -89,7 +89,7 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
             >
-                <div className="h-[1px] w-12 bg-vapor/40" />
+                <div className="h-px w-12 bg-vapor/40" />
                 Scroll to Explore
             </motion.div>
         </section>

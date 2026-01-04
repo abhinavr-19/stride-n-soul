@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Oswald, Inter_Tight } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/ui/Navbar";
+import SmoothScroll from "@/components/ui/SmoothScroll";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -25,7 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${oswald.variable} ${interTight.variable}`}>
       <body className="antialiased bg-charcoal text-vapor selection:bg-lime selection:text-charcoal cursor-default">
-          {children}
+        <SmoothScroll>
+          <CustomCursor />
+          <Navbar />
+          <main className="min-h-screen">
+            {children}
+          </main>
+        </SmoothScroll>
       </body>
     </html>
   );
