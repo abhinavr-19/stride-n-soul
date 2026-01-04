@@ -9,7 +9,7 @@ import About from '@/components/landing/About'
 
 export default function Home() {
   return (
-    <main className="relative bg-charcoal text-vapor overflow-x-hidden selection:bg-lime selection:text-black">
+    <main className="relative bg-charcoal text-vapor selection:bg-lime selection:text-black">
       <Hero />
       <ProductCarousel />
       <About />
