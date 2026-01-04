@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import NextImage from 'next/image'
 import { Zap, Feather, Shield, Wind } from 'lucide-react'
 
 const specs = [
@@ -63,7 +64,7 @@ export default function TechSpecs() {
                         >
                             <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-700">
                                 {/* Using img for mock, in real app Next/Image with fill */}
-                                <img src={spec.image} alt={spec.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" />
+                                <NextImage src={spec.image} alt={spec.title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" />
                             </div>
                             <div className="absolute inset-0 bg-linear-to-t from-charcoal via-charcoal/50 to-transparent" />
 
