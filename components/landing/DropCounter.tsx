@@ -35,7 +35,7 @@ export default function DropCounter() {
 
 
     return (
-        <section className="relative py-40 bg-vapor text-charcoal flex flex-col items-center justify-center text-center overflow-hidden" id="drops">
+        <section className="relative py-24 bg-charcoal text-vapor flex flex-col items-center justify-center text-center overflow-hidden border-t border-vapor/10" id="drops">
 
             {/* Background Big Text */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
@@ -47,13 +47,13 @@ export default function DropCounter() {
 
                 <div className="flex justify-center gap-4 md:gap-12 font-display font-bold text-6xl md:text-9xl tracking-tighter tabular-nums leading-none">
                     <TimeBlock value={timeLeft.days} label="Days" />
-                    <span className="text-lime">:</span>
+                    <span className="text-lime/60">:</span>
                     <TimeBlock value={timeLeft.hours} label="Hrs" />
-                    <span className="text-lime hidden md:inline">:</span>
+                    <span className="text-lime/60 hidden md:inline">:</span>
                     <div className="hidden md:block">
                         <TimeBlock value={timeLeft.minutes} label="Mins" />
                     </div>
-                    <span className="text-lime hidden md:inline">:</span>
+                    <span className="text-lime/60 hidden md:inline">:</span>
                     <div className="hidden md:block">
                         <TimeBlock value={timeLeft.seconds} label="Secs" />
                     </div>
@@ -62,12 +62,12 @@ export default function DropCounter() {
                 {/* Mobile layout adjustment */}
                 <div className="flex md:hidden justify-center gap-4 mt-4 font-display font-bold text-6xl tracking-tighter tabular-nums leading-none">
                     <TimeBlock value={timeLeft.minutes} label="Mins" />
-                    <span className="text-lime">:</span>
+                    <span className="text-lime/60">:</span>
                     <TimeBlock value={timeLeft.seconds} label="Secs" />
                 </div>
 
                 <motion.button
-                    className="mt-16 group relative inline-flex items-center gap-3 px-8 py-4 bg-charcoal text-vapor font-bold uppercase tracking-widest text-sm overflow-hidden"
+                    className="mt-16 group relative inline-flex items-center gap-3 px-8 py-4 bg-vapor text-charcoal font-bold uppercase tracking-widest text-sm overflow-hidden"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
@@ -85,7 +85,7 @@ function TimeBlock({ value, label }: { value: number, label: string }) {
     return (
         <div className="flex flex-col items-center">
             <span>{value < 10 ? `0${value}` : value}</span>
-            <span className="text-xs md:text-sm tracking-widest text-charcoal/40 font-sans font-normal mt-2 md:mt-4">{label}</span>
+            <span className="text-xs md:text-sm tracking-widest text-vapor/40 font-sans font-normal mt-2 md:mt-4">{label}</span>
         </div>
     )
 }
