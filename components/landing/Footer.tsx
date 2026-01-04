@@ -42,7 +42,7 @@ export default function Footer() {
                 </div>
 
                 <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-vapor/40 uppercase tracking-widest gap-4">
-                    <p>&copy; 2024 Stride & Soul. All rights reserved.</p>
+                    <p>&copy; 2026 Stride & Soul. All rights reserved.</p>
                     <p>Designed by AR</p>
                 </div>
             </div>
