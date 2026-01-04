@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { products } from '@/lib/products'
 import { useUIStore } from '@/lib/store'
+import HeroScene from './3d/HeroScene'
 
 export default function Hero() {
     const containerRef = useRef(null)
@@ -37,29 +38,21 @@ export default function Hero() {
                 </h1>
             </motion.div>
 
-            {/* Floating Shoe */}
+            {/* Floating Shoe (3D Interactive) */}
             <motion.div
                 className="relative z-20 w-[90%] md:w-[60%] max-w-4xl aspect-4/3"
                 style={{ y: y1 }}
-                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
             >
-                <motion.div
-                    animate={{ y: [-20, 20, -20] }}
-                    transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                <div
                     className="w-full h-full relative"
                     onMouseEnter={() => setCursorVariant('view')}
                     onMouseLeave={() => setCursorVariant('default')}
                 >
-                    <Image
-                        src={heroProduct.image}
-                        alt="Hero Shoe"
-                        fill
-                        className="object-contain drop-shadow-2xl"
-                        priority
-                    />
-                </motion.div>
+                    <HeroScene imagePath={heroProduct.image} />
+                </div>
             </motion.div>
 
             {/* Foreground Text Overlay (Mix Blend) */}

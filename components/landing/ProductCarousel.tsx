@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { products } from '@/lib/products'
 import Image from 'next/image'
@@ -9,7 +9,16 @@ import { useStore } from '@/lib/store'
 import { toast } from 'sonner'
 
 export default function ProductCarousel() {
-    const scrollRef = useRef(null)
+    const carouselRef = useRef<HTMLDivElement>(null)
+    const [width, setWidth] = useState(0)
+
+    useEffect(() => {
+        if (carouselRef.current) {
+            // Calculate movable width: scrollWidth - clientWidth
+            // Add some padding/buffer if needed
+            setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth)
+        }
+    }, [])
 
     return (
         <section className="py-32 bg-charcoal overflow-hidden" id="collections">
@@ -23,18 +32,19 @@ export default function ProductCarousel() {
             </div>
 
             <motion.div
-                className="cursor-grab active:cursor-grabbing pl-6 md:pl-20"
+                ref={carouselRef}
+                className="cursor-grab active:cursor-grabbing pl-6 md:pl-20 overflow-visible"
                 whileTap={{ cursor: 'grabbing' }}
             >
                 <motion.div
                     drag="x"
-                    dragConstraints={{ right: 0, left: -1000 }} // Needs dynamic calculation in real app
-                    className="flex gap-8"
+                    dragConstraints={{ right: 0, left: -width }}
+                    className="flex gap-8 w-max"
                 >
                     {products.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
-                    {/* Duplicate for basic infinite feel logic placeholder */}
+                    {/* Duplicate for basic feel logic placeholder */}
                     {products.map((product) => (
                         <ProductCard key={`${product.id}-duplicate`} product={product} />
                     ))}
