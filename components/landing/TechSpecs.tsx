@@ -9,25 +9,25 @@ const specs = [
         title: "Zero-G Foam",
         description: "Proprietary compound that returns 85% energy with every step. Feel the bounce.",
         icon: Zap,
-        image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2070&auto=format&fit=crop"
+        image: "/images/tex-foam.png"
     },
     {
         title: "Carbon Fiber Plate",
         description: "Embedded full-length plate for maximum propulsion and stability.",
         icon: Shield,
-        image: "https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=2071&auto=format&fit=crop"
+        image: "/images/tex-carbon.png"
     },
     {
         title: "Aero-Knit Upper",
         description: "3D printed mesh that adapts to your foot shape while allowing maximum airflow.",
         icon: Wind,
-        image: "https://images.unsplash.com/photo-1621252179027-94459d27d3ee?q=80&w=2070&auto=format&fit=crop"
+        image: "/images/tex-mesh.png"
     },
     {
         title: "Featherweight",
         description: "At just 180g, it's the lightest performance shoe in its class.",
         icon: Feather,
-        image: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=2071&auto=format&fit=crop"
+        image: "/images/tex-feather.png"
     },
 ]
 

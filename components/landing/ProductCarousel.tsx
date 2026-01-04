@@ -6,6 +6,7 @@ import { products } from '@/lib/products'
 import Image from 'next/image'
 import { Plus } from 'lucide-react'
 import { useStore } from '@/lib/store'
+import { toast } from 'sonner'
 
 export default function ProductCarousel() {
     const scrollRef = useRef(null)
@@ -50,11 +51,12 @@ function ProductCard({ product }: { product: any }) {
         e.stopPropagation();
         addItem(product.id)
         toggleCart()
+        toast.success(`Added ${product.name} to cart`)
     }
 
     return (
         <motion.div
-            className="group relative min-w-[280px] md:min-w-[400px] aspect-[3/4] bg-neutral-900 overflow-hidden flex-shrink-0"
+            className="group relative min-w-[280px] md:min-w-[400px] aspect-3/4 bg-neutral-900 overflow-hidden shrink-0"
         >
             <div className="absolute inset-0 bg-vapor/5 group-hover:bg-lime transition-colors duration-500" />
 
