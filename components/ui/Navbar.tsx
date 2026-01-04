@@ -35,7 +35,7 @@ export default function Navbar() {
 
                     {/* Desktop Nav */}
                     <nav className="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider uppercase opacity-80">
-                        {['Collections', 'About', 'Technology', 'Drops'].map((item) => (
+                        {['Collections', 'About', 'Technology', 'Manifesto', 'Drops'].map((item) => (
                             <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-lime transition-colors">
                                 {item}
                             </a>
@@ -75,7 +75,7 @@ export default function Navbar() {
                         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                         className="fixed inset-0 z-40 bg-charcoal flex flex-col items-center justify-center gap-8 md:hidden"
                     >
-                        {['Collections', 'About', 'Technology', 'Drops'].map((item, i) => (
+                        {['Collections', 'About', 'Technology', 'Manifesto', 'Drops'].map((item, i) => (
                             <motion.a
                                 key={item}
                                 href={`#${item.toLowerCase()}`}
