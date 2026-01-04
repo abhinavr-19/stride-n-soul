@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Oswald, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
+import Cart from "@/components/ui/Cart";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import CustomCursor from "@/components/ui/CustomCursor";
 import { ToastProvider } from "@/components/ui/Toaster";
@@ -32,6 +33,7 @@ export default function RootLayout({
         <SmoothScroll>
           <CustomCursor />
           <Navbar />
+          <Cart />
           <ToastProvider />
           <main className="min-h-screen">
             {children}
