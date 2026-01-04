@@ -41,11 +41,9 @@ export default function About() {
                 <h3 className="text-3xl md:text-5xl font-bold text-vapor mb-6">
                     CRAFTED FOR THE <span className="text-lime">UNBOUND</span>
                 </h3>
-                <p className="text-lg md:text-xl text-vapor/80 leading-relaxed max-w-2xl mx-auto font-light">
-                    Born from the intersection of aerospace engineering and street culture.
-                    STRIDE & SOUL isn't just footwear; it's kinetic art designed to defy gravity.
-                    Every stitch is calculated, every sole is sculpted for zero-G comfort.
-                </p>
+                Born from the intersection of aerospace engineering and street culture.
+                STRIDE & SOUL isn&apos;t just footwear; it&apos;s kinetic art designed to defy gravity.
+                Every stitch is calculated, every sole is sculpted for zero-G comfort.
             </motion.div>
         </section>
     )
