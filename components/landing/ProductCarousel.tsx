@@ -1,46 +1,121 @@
 'use client'
 
-import React, { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import React, { useRef, useState, useEffect } from 'react'
+import { motion, useScroll, useTransform, useMotionValue, animate } from 'framer-motion'
 import { products } from '@/lib/products'
 import Image from 'next/image'
-import { Plus } from 'lucide-react'
+import { Plus, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useStore } from '@/lib/store'
 import { toast } from 'sonner'
 
 export default function ProductCarousel() {
-    // Ref for the constraint container (viewport)
     const carouselRef = useRef<HTMLDivElement>(null)
+    const containerRef = useRef<HTMLDivElement>(null)
+    const [width, setWidth] = useState(0)
+    // Use x motion value to control position programmatically if needed, 
+    // but for simple drag + buttons, usage of standard animate controls or just scroll effects works.
+    // Simplifying: Buttons will scroll the container using standard localized scrolling or animating the motion value component?
+    // Let's stick to Framer Motion drag. To move it with arrows, we need a motionValue or useAnimate.
+    // Let's use `useMotionValue` for the x position.
+
+    const x = useMotionValue(0)
+    const [maxDrag, setMaxDrag] = useState(0)
+
+    useEffect(() => {
+        const updateWidth = () => {
+            if (carouselRef.current && containerRef.current) {
+                const scrollWidth = carouselRef.current.scrollWidth
+                const overflowWidth = containerRef.current.offsetWidth
+                const w = scrollWidth - overflowWidth
+                setWidth(w)
+                setMaxDrag(-w)
+            }
+        }
+
+        // Initial measurement
+        updateWidth()
+        // Wait a tick for layout
+        setTimeout(updateWidth, 100)
+
+        window.addEventListener('resize', updateWidth)
+        return () => window.removeEventListener('resize', updateWidth)
+    }, [])
+
+    const slide = (direction: 'left' | 'right') => {
+        const current = x.get()
+        const moveAmount = containerRef.current ? containerRef.current.offsetWidth / 2 : 300
+
+        let target = direction === 'left' ? current + moveAmount : current - moveAmount
+
+        // Clamp
+        if (target > 0) target = 0
+        if (target < -width) target = -width
+
+        animate(x, target, { type: "spring", bounce: 0, duration: 0.8 })
+    }
 
     return (
-        <section className="py-32 bg-charcoal overflow-hidden" id="collections">
+        <section className="py-32 bg-charcoal overflow-hidden relative group" id="collections">
             <div className="container mx-auto px-6 mb-12 flex items-end justify-between">
                 <h2 className="text-6xl md:text-8xl font-display font-bold uppercase text-vapor leading-[0.8]">
                     Trending <br /> <span className="text-lime">Drops</span>
                 </h2>
-                <p className="hidden md:block text-vapor/60 max-w-xs text-sm">
-                    Exclusive releases available for a limited time. Secure your pair before they vanish.
-                </p>
+
+                {/* Desktop Controls */}
+                <div className="hidden md:flex gap-4">
+                    <button
+                        onClick={() => slide('left')}
+                        className="w-12 h-12 rounded-full border border-vapor/20 text-vapor flex items-center justify-center hover:bg-vapor hover:text-charcoal transition-all active:scale-95"
+                    >
+                        <ChevronLeft />
+                    </button>
+                    <button
+                        onClick={() => slide('right')}
+                        className="w-12 h-12 rounded-full border border-vapor/20 text-vapor flex items-center justify-center hover:bg-vapor hover:text-charcoal transition-all active:scale-95"
+                    >
+                        <ChevronRight />
+                    </button>
+                </div>
             </div>
 
             <div
-                ref={carouselRef}
-                className="w-full overflow-hidden pl-6 md:pl-20" // Constraint container needs overflow-hidden to define bounds
+                ref={containerRef}
+                className="w-full overflow-hidden pl-6 md:pl-20 relative"
             >
                 <motion.div
+                    ref={carouselRef}
                     drag="x"
-                    dragConstraints={carouselRef}
+                    dragConstraints={{ left: -width, right: 0 }}
+                    style={{ x }}
                     whileTap={{ cursor: 'grabbing' }}
-                    className="flex gap-8 w-max cursor-grab active:cursor-grabbing pb-12" // Added padding bottom to avoid clipping shadows/hover
+                    className="flex gap-8 w-max cursor-grab active:cursor-grabbing pb-12 pr-20" // pr-20 padding-right to ensuring last item isn't flush
                 >
                     {products.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
-                    {/* Duplicate for basic feel logic placeholder */}
                     {products.map((product) => (
                         <ProductCard key={`${product.id}-duplicate`} product={product} />
                     ))}
                 </motion.div>
+
+                {/* Gradients to hide edges nicely */}
+                <div className="absolute top-0 right-0 h-full w-20 bg-linear-to-l from-charcoal to-transparent pointer-events-none z-10 hidden md:block" />
+            </div>
+
+            {/* Mobile Arrows Overlay (Optional, but user asked for arrows generally) */}
+            <div className="md:hidden flex justify-end gap-4 px-6 mt-4">
+                <button
+                    onClick={() => slide('left')}
+                    className="w-10 h-10 rounded-full border border-vapor/20 text-vapor flex items-center justify-center active:bg-vapor active:text-charcoal"
+                >
+                    <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                    onClick={() => slide('right')}
+                    className="w-10 h-10 rounded-full border border-vapor/20 text-vapor flex items-center justify-center active:bg-vapor active:text-charcoal"
+                >
+                    <ChevronRight className="w-5 h-5" />
+                </button>
             </div>
         </section>
     )
