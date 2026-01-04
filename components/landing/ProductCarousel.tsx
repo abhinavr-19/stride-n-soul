@@ -60,22 +60,6 @@ export default function ProductCarousel() {
                 <h2 className="text-6xl md:text-8xl font-display font-bold uppercase text-vapor leading-[0.8]">
                     Trending <br /> <span className="text-lime">Drops</span>
                 </h2>
-
-                {/* Desktop Controls */}
-                <div className="hidden md:flex gap-4">
-                    <button
-                        onClick={() => slide('left')}
-                        className="w-12 h-12 rounded-full border border-vapor/20 text-vapor flex items-center justify-center hover:bg-vapor hover:text-charcoal transition-all active:scale-95"
-                    >
-                        <ChevronLeft />
-                    </button>
-                    <button
-                        onClick={() => slide('right')}
-                        className="w-12 h-12 rounded-full border border-vapor/20 text-vapor flex items-center justify-center hover:bg-vapor hover:text-charcoal transition-all active:scale-95"
-                    >
-                        <ChevronRight />
-                    </button>
-                </div>
             </div>
 
             <div
@@ -100,6 +84,22 @@ export default function ProductCarousel() {
 
                 {/* Gradients to hide edges nicely */}
                 <div className="absolute top-0 right-0 h-full w-20 bg-linear-to-l from-charcoal to-transparent pointer-events-none z-10 hidden md:block" />
+            </div>
+
+            {/* Controls (Below Carousel) */}
+            <div className="container mx-auto px-6 mt-8 flex justify-center gap-4">
+                <button
+                    onClick={() => slide('left')}
+                    className="w-14 h-14 rounded-full border border-vapor/20 text-vapor flex items-center justify-center hover:bg-vapor hover:text-charcoal transition-all active:scale-95"
+                >
+                    <ChevronLeft />
+                </button>
+                <button
+                    onClick={() => slide('right')}
+                    className="w-14 h-14 rounded-full border border-vapor/20 text-vapor flex items-center justify-center hover:bg-vapor hover:text-charcoal transition-all active:scale-95"
+                >
+                    <ChevronRight />
+                </button>
             </div>
 
             {/* Mobile Arrows Overlay (Optional, but user asked for arrows generally) */}
