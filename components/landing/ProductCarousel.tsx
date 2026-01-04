@@ -9,16 +9,8 @@ import { useStore } from '@/lib/store'
 import { toast } from 'sonner'
 
 export default function ProductCarousel() {
+    // Ref for the constraint container (viewport)
     const carouselRef = useRef<HTMLDivElement>(null)
-    const [width, setWidth] = useState(0)
-
-    useEffect(() => {
-        if (carouselRef.current) {
-            // Calculate movable width: scrollWidth - clientWidth
-            // Add some padding/buffer if needed
-            setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth)
-        }
-    }, [])
 
     return (
         <section className="py-32 bg-charcoal overflow-hidden" id="collections">
@@ -31,15 +23,15 @@ export default function ProductCarousel() {
                 </p>
             </div>
 
-            <motion.div
+            <div
                 ref={carouselRef}
-                className="cursor-grab active:cursor-grabbing pl-6 md:pl-20 overflow-visible"
-                whileTap={{ cursor: 'grabbing' }}
+                className="w-full overflow-hidden pl-6 md:pl-20" // Constraint container needs overflow-hidden to define bounds
             >
                 <motion.div
                     drag="x"
-                    dragConstraints={{ right: 0, left: -width }}
-                    className="flex gap-8 w-max"
+                    dragConstraints={carouselRef}
+                    whileTap={{ cursor: 'grabbing' }}
+                    className="flex gap-8 w-max cursor-grab active:cursor-grabbing pb-12" // Added padding bottom to avoid clipping shadows/hover
                 >
                     {products.map((product) => (
                         <ProductCard key={product.id} product={product} />
@@ -49,7 +41,7 @@ export default function ProductCarousel() {
                         <ProductCard key={`${product.id}-duplicate`} product={product} />
                     ))}
                 </motion.div>
-            </motion.div>
+            </div>
         </section>
     )
 }
