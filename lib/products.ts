@@ -14,7 +14,7 @@ export const products: Product[] = [
         name: "AERO-X LIMITLESS",
         price: 295,
         category: "Performance",
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop",
+        image: "/images/hero-shoe.png",
         // Classic red Nike shoe placeholder, but will serve as the "Hero" shoe
         description: "Defy gravity with the Aero-X. Engineered with zero-gravity foam and adaptive mesh for the ultimate weightless experience.",
         features: ["Zero-G Foam", "Carbon Plate", "Adaptive Knit"],
@@ -24,7 +24,7 @@ export const products: Product[] = [
         name: "URBAN DRIFTER",
         price: 210,
         category: "Lifestyle",
-        image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=1964&auto=format&fit=crop",
+        image: "/images/shoe-green.png",
         // Green/Volt shoe
         description: "Street-ready aesthetics meet performance engineering. The Urban Drifter is built for the concrete jungle.",
         features: ["Water Repellent", "Night Reflective", "Grip Sole"],
@@ -34,7 +34,7 @@ export const products: Product[] = [
         name: "QUANTUM LEAP",
         price: 350,
         category: "Limited",
-        image: "https://images.unsplash.com/photo-1560769629-975e13f0c470?q=80&w=1974&auto=format&fit=crop",
+        image: "/images/shoe-luxury.png",
         // Premium textured shoe
         description: "A fusion of luxury materials and futuristic silhouette. Limited edition release for the bold.",
         features: ["Italian Leather", "Hand Stitching", "Memory Sole"],
@@ -44,7 +44,7 @@ export const products: Product[] = [
         name: "NEON STRIDE",
         price: 180,
         category: "Running",
-        image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=1974&auto=format&fit=crop",
+        image: "/images/shoe-neon.png",
         // Colorful clean shoe
         description: "Light up the track. Neon Stride combines high-visibility design with explosive energy return.",
         features: ["Energy Return", "Breathable", "Lightweight"],
