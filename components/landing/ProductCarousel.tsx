@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef, useState, useEffect } from 'react'
-import { motion, useScroll, useTransform, useMotionValue, animate } from 'framer-motion'
+import { motion, useMotionValue, animate } from 'framer-motion'
 import { products } from '@/lib/products'
 import Image from 'next/image'
 import { Plus, ChevronLeft, ChevronRight } from 'lucide-react'
@@ -19,7 +19,6 @@ export default function ProductCarousel() {
     // Let's use `useMotionValue` for the x position.
 
     const x = useMotionValue(0)
-    const [maxDrag, setMaxDrag] = useState(0)
 
     useEffect(() => {
         const updateWidth = () => {
@@ -28,7 +27,6 @@ export default function ProductCarousel() {
                 const overflowWidth = containerRef.current.offsetWidth
                 const w = scrollWidth - overflowWidth
                 setWidth(w)
-                setMaxDrag(-w)
             }
         }
 
@@ -121,7 +119,7 @@ export default function ProductCarousel() {
     )
 }
 
-function ProductCard({ product }: { product: any }) {
+function ProductCard({ product }: { product: typeof products[0] }) {
     const { addItem, toggleCart } = useStore()
 
     const handleAddToCart = (e: React.MouseEvent) => {
