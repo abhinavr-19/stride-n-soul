@@ -1,7 +1,17 @@
+import Hero from "@/components/landing/Hero";
+import TechSpecs from "@/components/landing/TechSpecs";
+import ProductCarousel from "@/components/landing/ProductCarousel";
+import DropCounter from "@/components/landing/DropCounter";
+import Footer from "@/components/landing/Footer";
+
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="text-6xl font-display font-bold uppercase">Stride & Soul</h1>
-    </main>
+    <div className="relative">
+      <Hero />
+      <TechSpecs />
+      <ProductCarousel />
+      <DropCounter />
+      <Footer />
+    </div>
   );
 }
