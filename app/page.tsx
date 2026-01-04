@@ -1,5 +1,6 @@
 import Hero from "@/components/landing/Hero";
 import TechSpecs from "@/components/landing/TechSpecs";
+import Manifesto from "@/components/landing/Manifesto";
 import ProductCarousel from "@/components/landing/ProductCarousel";
 import DropCounter from "@/components/landing/DropCounter";
 import Footer from "@/components/landing/Footer";
@@ -13,6 +14,7 @@ export default function Home() {
       <ProductCarousel />
       <About />
       <TechSpecs />
+      <Manifesto />
       <DropCounter />
       <Footer />
     </main>
