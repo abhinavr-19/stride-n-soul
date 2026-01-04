@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${oswald.variable} ${interTight.variable}`}>
+    <html lang="en" className={`${oswald.variable} ${interTight.variable}`} suppressHydrationWarning>
       <body className="antialiased bg-charcoal text-vapor selection:bg-lime selection:text-charcoal cursor-default overflow-x-hidden">
         <SmoothScroll>
           <CustomCursor />
