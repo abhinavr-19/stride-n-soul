@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import Image from 'next/image'
 import { products } from '@/lib/products'
 import { useUIStore } from '@/lib/store'
 import HeroScene from './3d/HeroScene'
