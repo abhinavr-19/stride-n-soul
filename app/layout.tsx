@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import CustomCursor from "@/components/ui/CustomCursor";
+import { ToastProvider } from "@/components/ui/Toaster";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
         <SmoothScroll>
           <CustomCursor />
           <Navbar />
+          <ToastProvider />
           <main className="min-h-screen">
             {children}
           </main>
