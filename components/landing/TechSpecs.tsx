@@ -44,42 +44,74 @@ export default function TechSpecs() {
     return (
         <section
             ref={targetRef}
-            className="relative h-[300vh] bg-vapor text-charcoal"
+            className="relative bg-vapor text-charcoal"
             id="technology"
         >
-            <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-
-                {/* Section Title - Fixed */}
-                <div className="absolute top-10 left-10 md:left-20 z-20">
-                    <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter">
+            {/* Mobile Layout (Vertical Stack) */}
+            <div className="md:hidden py-20 px-6 flex flex-col gap-8">
+                <div className="mb-8">
+                    <h2 className="text-4xl font-display font-bold uppercase tracking-tighter">
                         Surgical <br /> Precision
                     </h2>
                 </div>
-
-                <motion.div style={{ x }} className="flex gap-10 pl-[20vw] pr-[20vw]">
-                    {specs.map((spec, i) => (
-                        <div
-                            key={i}
-                            className="relative h-[60vh] w-[80vw] md:w-[40vw] shrink-0 bg-charcoal text-vapor p-8 flex flex-col justify-end group overflow-hidden border border-charcoal/10"
-                        >
-                            <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-700">
-                                {/* Using img for mock, in real app Next/Image with fill */}
-                                <NextImage src={spec.image} alt={spec.title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" />
-                            </div>
-                            <div className="absolute inset-0 bg-linear-to-t from-charcoal via-charcoal/50 to-transparent" />
-
-                            <div className="relative z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <spec.icon className="w-12 h-12 text-lime mb-4" />
-                                <h3 className="text-3xl font-display font-bold uppercase mb-2">{spec.title}</h3>
-                                <p className="text-sm md:text-base text-vapor/80 max-w-sm">{spec.description}</p>
-                            </div>
-
-                            <div className="absolute top-4 right-4 text-6xl font-display font-bold text-transparent text-stroke opacity-10">
-                                0{i + 1}
-                            </div>
+                {specs.map((spec, i) => (
+                    <div
+                        key={i}
+                        className="relative h-[50vh] w-full shrink-0 bg-charcoal text-vapor p-6 flex flex-col justify-end group overflow-hidden border border-charcoal/10"
+                    >
+                        <div className="absolute inset-0 opacity-40">
+                            <NextImage src={spec.image} alt={spec.title} fill className="object-cover grayscale" />
                         </div>
-                    ))}
-                </motion.div>
+                        <div className="absolute inset-0 bg-linear-to-t from-charcoal via-charcoal/50 to-transparent" />
+
+                        <div className="relative z-10 translate-y-0">
+                            <spec.icon className="w-10 h-10 text-lime mb-4" />
+                            <h3 className="text-2xl font-display font-bold uppercase mb-2">{spec.title}</h3>
+                            <p className="text-sm text-vapor/80">{spec.description}</p>
+                        </div>
+
+                        <div className="absolute top-4 right-4 text-4xl font-display font-bold text-transparent text-stroke opacity-10">
+                            0{i + 1}
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* Desktop Layout (Horizontal Scroll) */}
+            <div className="hidden md:block h-[300vh]">
+                <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+                    {/* Section Title - Fixed */}
+                    <div className="absolute top-10 left-10 md:left-20 z-20">
+                        <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter">
+                            Surgical <br /> Precision
+                        </h2>
+                    </div>
+
+                    <motion.div style={{ x }} className="flex gap-10 pl-[20vw] pr-[20vw]">
+                        {specs.map((spec, i) => (
+                            <div
+                                key={i}
+                                className="relative h-[60vh] w-[80vw] md:w-[40vw] shrink-0 bg-charcoal text-vapor p-8 flex flex-col justify-end group overflow-hidden border border-charcoal/10"
+                            >
+                                <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-700">
+                                    {/* Using img for mock, in real app Next/Image with fill */}
+                                    <NextImage src={spec.image} alt={spec.title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" />
+                                </div>
+                                <div className="absolute inset-0 bg-linear-to-t from-charcoal via-charcoal/50 to-transparent" />
+
+                                <div className="relative z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <spec.icon className="w-12 h-12 text-lime mb-4" />
+                                    <h3 className="text-3xl font-display font-bold uppercase mb-2">{spec.title}</h3>
+                                    <p className="text-sm md:text-base text-vapor/80 max-w-sm">{spec.description}</p>
+                                </div>
+
+                                <div className="absolute top-4 right-4 text-6xl font-display font-bold text-transparent text-stroke opacity-10">
+                                    0{i + 1}
+                                </div>
+                            </div>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
         </section>
     )
