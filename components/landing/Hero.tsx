@@ -32,14 +32,14 @@ export default function Hero() {
                 className="absolute z-10 w-full text-center pointer-events-none select-none"
                 style={{ y: y2 }}
             >
-                <h1 className="text-[15vw] md:text-[20vw] leading-none font-display font-bold uppercase text-transparent text-stroke opacity-20 whitespace-nowrap">
+                <h1 className="text-[12vw] md:text-[20vw] leading-none font-display font-bold uppercase text-transparent text-stroke opacity-20 whitespace-nowrap">
                     Defy Gravity
                 </h1>
             </motion.div>
 
             {/* Floating Shoe (3D Interactive) */}
             <motion.div
-                className="relative z-20 w-[90%] md:w-[60%] max-w-4xl aspect-4/3"
+                className="relative z-20 w-full md:w-[60%] px-4 max-w-4xl aspect-4/3"
                 style={{ y: y1 }}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
