@@ -55,7 +55,7 @@ export default function ProductCarousel() {
     return (
         <section className="py-32 bg-charcoal overflow-hidden relative group" id="collections">
             <div className="container mx-auto px-6 mb-12 flex items-end justify-between">
-                <h2 className="text-6xl md:text-8xl font-display font-bold uppercase text-vapor leading-[0.8]">
+                <h2 className="text-4xl md:text-8xl font-display font-bold uppercase text-vapor leading-none md:leading-[0.8]">
                     Trending <br /> <span className="text-lime">Drops</span>
                 </h2>
             </div>
@@ -88,33 +88,19 @@ export default function ProductCarousel() {
             <div className="container mx-auto px-6 mt-8 flex justify-center gap-4">
                 <button
                     onClick={() => slide('left')}
-                    className="w-14 h-14 rounded-full border border-vapor/20 text-vapor flex items-center justify-center hover:bg-vapor hover:text-charcoal transition-all active:scale-95"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-vapor/20 text-vapor flex items-center justify-center hover:bg-vapor hover:text-charcoal transition-all active:scale-95"
                 >
-                    <ChevronLeft />
+                    <ChevronLeft className="w-6 h-6" />
                 </button>
                 <button
                     onClick={() => slide('right')}
-                    className="w-14 h-14 rounded-full border border-vapor/20 text-vapor flex items-center justify-center hover:bg-vapor hover:text-charcoal transition-all active:scale-95"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-vapor/20 text-vapor flex items-center justify-center hover:bg-vapor hover:text-charcoal transition-all active:scale-95"
                 >
-                    <ChevronRight />
+                    <ChevronRight className="w-6 h-6" />
                 </button>
             </div>
 
-            {/* Mobile Arrows Overlay (Optional, but user asked for arrows generally) */}
-            <div className="md:hidden flex justify-end gap-4 px-6 mt-4">
-                <button
-                    onClick={() => slide('left')}
-                    className="w-10 h-10 rounded-full border border-vapor/20 text-vapor flex items-center justify-center active:bg-vapor active:text-charcoal"
-                >
-                    <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                    onClick={() => slide('right')}
-                    className="w-10 h-10 rounded-full border border-vapor/20 text-vapor flex items-center justify-center active:bg-vapor active:text-charcoal"
-                >
-                    <ChevronRight className="w-5 h-5" />
-                </button>
-            </div>
+
         </section>
     )
 }
@@ -154,7 +140,7 @@ function ProductCard({ product }: { product: typeof products[0] }) {
                         <p className="text-xs text-vapor/60 mb-1 font-bold tracking-widest uppercase group-hover:text-charcoal/60 transition-colors">
                             {product.category}
                         </p>
-                        <h3 className="text-2xl font-display font-bold text-vapor uppercase leading-none group-hover:text-charcoal transition-colors">
+                        <h3 className="text-xl md:text-2xl font-display font-bold text-vapor uppercase leading-none group-hover:text-charcoal transition-colors wrap-break-word">
                             {product.name}
                         </h3>
                         <p className="text-lg font-mono text-lime group-hover:text-charcoal font-bold mt-2 transition-colors">
