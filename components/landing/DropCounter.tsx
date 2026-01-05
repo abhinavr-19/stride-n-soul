@@ -39,7 +39,7 @@ export default function DropCounter() {
 
             {/* Background Big Text */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
-                <span className="text-[30vw] font-display font-bold leading-none">NEXT</span>
+                <span className="text-[20vw] md:text-[30vw] font-display font-bold leading-none">NEXT</span>
             </div>
 
             <div className="z-10 container mx-auto px-4">
