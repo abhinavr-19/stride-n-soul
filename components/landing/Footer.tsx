@@ -13,7 +13,7 @@ export default function Footer() {
                     </div>
 
                     {/* Links */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-24 text-sm tracking-widest uppercase">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24 text-sm tracking-widest uppercase">
                         <div>
                             <h4 className="font-bold mb-6 text-lime">Shop</h4>
                             <ul className="space-y-4 text-vapor/60">
